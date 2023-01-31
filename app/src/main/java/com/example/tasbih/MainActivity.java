@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 String daroodCountText= daroodCount.getText().toString();
                 String astaghfarText= astaghfar.getText().toString();
                 String astaghfarCountText= astaghfarCount.getText().toString();
-                String myDate= MainActivity.this.myDate.toString();
+                String myDates= myDate.getText().toString();
 
 
                 if (kalmaText.isEmpty() || kalmaCountText.isEmpty() || daroodText.isEmpty() ||daroodCountText.isEmpty()||astaghfarText.isEmpty()||astaghfarCountText.isEmpty() ) {
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                Tasbih tasbih= new Tasbih(kalmaText,kalmaCountText,daroodText,daroodCountText,astaghfarText,astaghfarCountText,myDate);
+                Tasbih tasbih= new Tasbih(kalmaText,kalmaCountText,daroodText,daroodCountText,astaghfarText,astaghfarCountText,myDates);
 
                 db.insertTasbih(tasbih);
                 db.close();
