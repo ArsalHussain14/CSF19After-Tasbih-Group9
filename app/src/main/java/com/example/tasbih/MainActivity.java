@@ -8,12 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.Date;
-
 public class MainActivity extends AppCompatActivity {
     EditText kalma, kalmaCount, darood, daroodCount, astaghfar, astaghfarCount;
     Button submit;
-    View date = findViewById(R.id.date);
+    EditText myDate;
     DbHandler db;
 
     @Override
@@ -29,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         astaghfar= findViewById(R.id.astaghfar);
         astaghfarCount= findViewById(R.id.astaghfarCount);
         submit= findViewById(R.id.submit);
+        myDate= findViewById(R.id.myDate);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 String daroodCountText= daroodCount.getText().toString();
                 String astaghfarText= astaghfar.getText().toString();
                 String astaghfarCountText= astaghfarCount.getText().toString();
-                String myDate= date.toString();
+                String myDate= MainActivity.this.myDate.toString();
 
                 if (kalmaText.isEmpty() || kalmaCountText.isEmpty() || daroodText.isEmpty() ||daroodCountText.isEmpty()||astaghfarText.isEmpty()||astaghfarCountText.isEmpty() ) {
                     Toast.makeText(MainActivity.this, "Please enter valid data", Toast.LENGTH_SHORT).show();

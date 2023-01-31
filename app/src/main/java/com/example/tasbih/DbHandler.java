@@ -30,8 +30,8 @@ public class DbHandler extends SQLiteOpenHelper {
                 + COLUMN_Kalma_Count + " TEXT,"
                 + COLUMN_Darood + " TEXT,"
                 + COLUMN_Darood_Count + " TEXT,"
-                + COLUMN_Astaghfar + "TEXT,"
-                + COLUMN_Astaghfar_Count +"INETEGER,"
+                + COLUMN_Astaghfar + " TEXT,"
+                + COLUMN_Astaghfar_Count +" TEXT,"
                 + COLUMN_Date +" TEXT"
                 + ")";
         sqLiteDatabase.execSQL(query);
