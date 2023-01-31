@@ -72,4 +72,8 @@ public class Tasbih {
     public void setAstaghfarCount(String astaghfarCount) {
         this.astaghfarCount = astaghfarCount;
     }
+    @Override
+    public String toString() {
+        return "Tasbih [kalma=" + kalm + ", kalmaCount=" + kalmaCount + ", darood=" + darood +" daroodCount="+daroodCount+"astaghfar= "+astaghfar+" astaghfarCount= "+astaghfarCount+ " date="+date+" ]";
+    }
 }

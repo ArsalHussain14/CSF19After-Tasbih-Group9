@@ -1,9 +1,14 @@
 package com.example.tasbih;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DbHandler extends SQLiteOpenHelper {
 
@@ -67,4 +72,34 @@ public class DbHandler extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
+    public List<Tasbih> selectAllTasbih() {
+        List<Tasbih> tasbih = new ArrayList<>();
+
+        String sql = "SELECT * FROM " + TABLE_NAME;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+
+
+        if (cursor.moveToFirst()) {
+            do {
+
+                @SuppressLint("Range") String kalma = cursor.getString(cursor.getColumnIndex(COLUMN_Kalma));
+                @SuppressLint("Range") String kalmaCount = cursor.getString(cursor.getColumnIndex(COLUMN_Kalma_Count));
+                @SuppressLint("Range") String darood = cursor.getString(cursor.getColumnIndex(COLUMN_Darood));
+                @SuppressLint("Range") String daroodCount = cursor.getString(cursor.getColumnIndex(COLUMN_Darood_Count));
+                @SuppressLint("Range") String astaghfar = cursor.getString(cursor.getColumnIndex(COLUMN_Astaghfar));
+                @SuppressLint("Range") String astaghfarCount = cursor.getString(cursor.getColumnIndex(COLUMN_Astaghfar_Count));
+                @SuppressLint("Range") String myDate = cursor.getString(cursor.getColumnIndex(COLUMN_Date));
+
+                tasbih.add(new Tasbih(kalma,kalmaCount,darood,daroodCount,astaghfar,astaghfarCount,myDate));
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return tasbih;
+    }
+
 }
